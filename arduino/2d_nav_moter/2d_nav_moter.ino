@@ -49,14 +49,21 @@ void MotorR(int Pulse_Width2);
 
 void setup(){
   Motors_init();
+  nh.getHardware()->setBaud(9600);
   nh.initNode();
   nh.subscribe(sub);
 }
 
 void loop(){
-  MotorL(w_l * 30);
-  MotorR(w_r*  30);
+  //w_l = w_r = 2.0;
+  MotorL(w_l * 50); // * 30
+  MotorR(w_r * 50); // * 30
   nh.spinOnce();
+  Serial.print("left:");
+  Serial.print(w_l);
+  Serial.print(" right:");
+  Serial.println(w_r);
+  delay(10);
 }
 
 /***********************************************************************
