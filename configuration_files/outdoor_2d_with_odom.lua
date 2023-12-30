@@ -12,6 +12,16 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+-- cartographerでのodometryは
+-- 1.cargographer自身がridarなどから計算してくれるodom
+-- 2.その他のエンコーダなどからpublishするodom
+-- どちらかを使う
+
+-- エンコーダのodomを使う場合(使わない場合は逆に変更)
+-- published_frame = "base_link" >> "odom"
+-- provide_odom_frame = true >> false
+-- use_odometry = false >> true
+
 include "map_builder.lua"
 include "trajectory_builder.lua"
 
@@ -20,11 +30,11 @@ options = {
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
   tracking_frame = "base_link",
-  published_frame = "odom", --base_link
-  odom_frame = "odom",
-  provide_odom_frame = false, --true
+  published_frame = "odom", --デフォ:base_link (エンコーダのodomを使う場合odomにする)
+  odom_frame = "odom", --デフォ:odom (provide_odom_frame=trueの場合のみ使われる)
+  provide_odom_frame = false, --デフォ:true (cartographerによるodomを使うかどうか)
   publish_frame_projected_to_2d = true,
-  use_odometry = true, --false
+  use_odometry = true, --デフォ:false (エンコーダなど他のodomのpublisherを使うかどうか)
   use_nav_sat = false,
   use_landmarks = false,
   num_laser_scans = 1,
