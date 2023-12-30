@@ -1,8 +1,28 @@
-void send_serail(int left, int right){
+static double d_prev_l = 0.0;
+static double d_prev_r = 0.0;
+
+void ros_send_odom(){
+  double d_curr_l, d_curr_r;
+  double delta_l_m, delta_r_m;
+  distance_ros_get(&d_curr_l, &d_curr_r); //[cm]
+  
+  delta_l_m = (d_curr_l - d_prev_l) / 100.0;
+  delta_r_m = (d_curr_r - d_prev_r) / 100.0;
+  
+  // ΔlとΔrを送る(メートルに換算)
   Serial.print("odom");
-  Serial.print(left);
+  Serial.print(delta_l_m);
   Serial.print(",");
-  Serial.print(right);
+  Serial.print(delta_r_m);
   Serial.println();
-  delay(200);
+}
+
+void ros_reset(){
+  d_prev_l = d_prev_r = 0.0;
+  //encoder_ros_reset();
+}
+
+void distance_ros_get(double *d_l, double *d_r){
+  *d_l = 10.0; //cm
+  *d_r = 15.0; //cm
 }
