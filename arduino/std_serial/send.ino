@@ -23,6 +23,6 @@ void ros_reset(){
 }
 
 void distance_ros_get(double *d_l, double *d_r){
-  *d_l = 10.0; //cm
-  *d_r = 15.0; //cm
+  *d_l = 0.0; //cm
+  *d_r = 0.0; //cm
 }
