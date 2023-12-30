@@ -18,12 +18,14 @@ void receive_serial(){
 
       linear_x = linear_x_str.toFloat();
       angular_z = angular_z_str.toFloat();
-
-      Serial.print("x:");
-      Serial.print(linear_x);
-      Serial.print(" z:");
-      Serial.println(angular_z);
+    } else {
+      linear_x = 0.0;
+      angular_z = 0.0;
     }
+    Serial.print("x:");
+    Serial.print(linear_x);
+    Serial.print(" z:");
+    Serial.println(angular_z);
   }
 }
 
