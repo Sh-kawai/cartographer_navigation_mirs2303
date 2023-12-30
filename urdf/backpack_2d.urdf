@@ -6,6 +6,7 @@
     <color rgba="0.2 0.2 0.2 1" />
   </material>
 
+  <!--
   <link name="imu">
     <visual>
       <origin xyz="0 0 0" />
@@ -15,6 +16,7 @@
       <material name="orange" />
     </visual>
   </link>
+  -->
 
   <link name="laser">
     <visual>
@@ -26,6 +28,7 @@
     </visual>
   </link>
 
+  <!--
   <link name="gps">
     <visual>
       <origin xyz="0 0 0" />
@@ -35,14 +38,17 @@
       <material name="gray" />
     </visual>
   </link>
+  -->
 
   <link name="base_link" />
 
+  <!--
   <joint name="imu_joint" type="fixed">
     <parent link="base_link" />
     <child link="imu" />
     <origin xyz="0 0 0" />
   </joint>
+  -->
 
   <joint name="laser_joint" type="fixed">
     <parent link="base_link" />
@@ -50,9 +56,11 @@
     <origin xyz="0.1007 0 0.0558" />
   </joint>
 
+  <!--
   <joint name="gps_joint" type="fixed">
     <parent link="base_link" />
     <child link="gps" />
     <origin rpy="0 -1.570796 3.141593" xyz="0.1007 0 0.1814" />
   </joint>
+  -->
 </robot>
