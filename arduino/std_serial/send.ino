@@ -10,16 +10,16 @@ void ros_send_odom(){
   delta_r_m = (d_curr_r - d_prev_r) / 100.0;
   
   // ΔlとΔrを送る(メートルに換算)
-  Serial.print("odom");
+  Serial.print("rosodom");
   Serial.print(delta_l_m);
-  Serial.print(",");
+  Serial.print(",,,");
   Serial.print(delta_r_m);
   Serial.println();
 }
 
 void ros_reset(){
   d_prev_l = d_prev_r = 0.0;
-  //encoder_ros_reset();
+  encoder_ros_reset();
 }
 
 void distance_ros_get(double *d_l, double *d_r){

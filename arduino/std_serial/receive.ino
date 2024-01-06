@@ -10,11 +10,14 @@ void receive_serial(){
   if(Serial.available() > 0){
     String receivedData = Serial.readStringUntil('\n');
 
-    int commandIndex = receivedData.indexOf(',');
+    int rosIndex = receivedData.indexOf("rosvel");
+    int rosNum = 6;
+    int commandIndex = receivedData.indexOf(",,,");
+    int commandNum = 3;
 
     if(commandIndex != -1){
-      String linear_x_str = receivedData.substring(0, commandIndex);
-      String angular_z_str = receivedData.substring(commandIndex + 1);
+      String linear_x_str = receivedData.substring(rosNum, commandIndex);
+      String angular_z_str = receivedData.substring(commandIndex + commandNum);
 
       linear_x = linear_x_str.toFloat();
       angular_z = angular_z_str.toFloat();
@@ -24,7 +27,7 @@ void receive_serial(){
     }
     Serial.print("x:");
     Serial.print(linear_x);
-    Serial.print(" z:");
+    Serial.print(", z:");
     Serial.println(angular_z);
   }
 }

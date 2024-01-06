@@ -107,6 +107,13 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Class: rviz/LaserScan
+      Enabled: true
+      Topic: /scan
+      Color: 0; 255; 0;
+      Color Transformer: FlatColor
+      Name: LaserScan
+      Size (m): 0.025
     - Class: rviz/MarkerArray
       Enabled: false
       Marker Topic: /trajectory_node_list
