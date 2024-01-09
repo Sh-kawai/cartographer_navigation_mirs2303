@@ -1,6 +1,20 @@
 import rospy
 from std_msgs.msg import String
+from geometry_msgs.msg import PoseStamped
 import socket
+
+def process(msg):
+    if msg == "NAV":
+        #rospy.init_node("goal_publisher", anonymous=True)
+        
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.pose.position.x = 0.0
+        goal_msg.pose.position.y = 0.0
+        goal_msg.port.orientation.w = 0.0
+        
+        goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=10)
+        goal_pub.publish(goal_msg)
 
 def main():
     rospy.init_node('socket_reciever', anonymous=True)
@@ -16,6 +30,8 @@ def main():
     while not rospy.is_shutdown():
         msg = client.recv(4096).decode()
         rospy.loginfo("sock recv: %s", msg)
+        
+        #process(msg)
         
         sock_pub.publish(msg)
 
