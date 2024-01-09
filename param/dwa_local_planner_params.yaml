@@ -1,26 +1,26 @@
 DWAPlannerROS:
 
 # Robot Configuration Parameters
-  max_vel_x: 0.15
-  min_vel_x: -0.15
+  max_vel_x: 0.3 #最高速度 x軸 defo:0.15
+  min_vel_x: 0.1 #最小速度 x軸 defo:-0.15
 
   max_vel_y: 0.0
   min_vel_y: 0.0
 
 # The velocity when robot is moving in a straight line
-  max_vel_trans:  0.22
-  min_vel_trans:  0.11
+  max_vel_trans:  0.3 #平面最高速度 defo:0.22
+  min_vel_trans:  0.1 #平面最小速度 defo:0.11
 
-  max_vel_theta: 2.75
-  min_vel_theta: 1.37
+  max_vel_theta: 0.5233 #絶対値最高角速度 defo:2.75
+  min_vel_theta: 0.0872 #絶対値最小角速度 defo:1.37
 
-  acc_lim_x: 2.5
+  acc_lim_x: 0.05 #最高加速度 defo:2.5
   acc_lim_y: 0.0
-  acc_lim_theta: 3.2
+  acc_lim_theta: 0.1 #最高角加速度 defo:3.2
 
 # Goal Tolerance Parametes
-  xy_goal_tolerance: 0.3
-  yaw_goal_tolerance: 3.14
+  xy_goal_tolerance: 0.15 #ゴール地点の平面距離の許容誤差[m] defo:0.3
+  yaw_goal_tolerance: 0.1744 #ゴール地点についたときの向きの許容誤差[rad] defo:3.14
   latch_xy_goal_tolerance: false
 
 # Forward Simulation Parameters
@@ -31,10 +31,10 @@ DWAPlannerROS:
   controller_frequency: 10.0
 
 # Trajectory Scoring Parameters
-  path_distance_bias: 32.0
-  goal_distance_bias: 20.0
-  occdist_scale: 0.02
-  forward_point_distance: 0.325
+  path_distance_bias: 32.0 #コントローラーがパスにどれだけ近づこうとするかの重み
+  goal_distance_bias: 20.0 #コントローラーがローカルの目標にどれだけ近づこうとするかの重み。このパラメーターは速度も制御します。
+  occdist_scale: 0.02 #コントローラーが障害物をどれだけ回避しようとするかの重み
+  forward_point_distance: 0.325 #追加のスコアリングポイントを配置するためのロボット中心点からの距離
   stop_time_buffer: 0.2
   scaling_speed: 0.25
   max_scaling_factor: 0.2
