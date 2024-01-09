@@ -6,12 +6,12 @@ TrajectoryPlannerROS:
   max_vel_x: 0.3 #最高速度 x軸
   min_vel_x: 0.1 #最小速度 x軸
 
-  max_vel_theta:  1.0 #最高角速度
-  min_vel_theta: -1.0 #最小角速度
-  min_in_place_vel_theta: 0.6 #その場回転の最低速度
+  max_vel_theta:  0.5233 #最高角速度 defo:1.0
+  min_vel_theta: -0.5233 #最小角速度 defo:-1.0
+  min_in_place_vel_theta: 0.26 #その場回転の最低速度 defo:0.6
   
-  acc_lim_x: 0.1 #最高加速度 defo:0.5
-  acc_lim_theta: 1.0 #最高角加速度
+  acc_lim_x: 0.05 #最高加速度 defo:0.5
+  acc_lim_theta: 0.1 #最高角加速度 defo:1.0
 
 # Goal Tolerance Parameters
 # フォワードシミュレーションパラメーター
