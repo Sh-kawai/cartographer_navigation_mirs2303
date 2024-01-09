@@ -1,7 +1,7 @@
 <launch>
     <!-- Load robot description and start state publisher-->
     <!--<param name="robot_description" textfile="$(find cartographer_navigation_mirs2303)/urdf/robot_model.urdf" />-->
-    <param name="robot_description" textfile="$(find cartographer_navigation_mirs2303)/urdf/backpack_2d.urdf" />
+    <param name="robot_description" textfile="$(find cartographer_navigation_mirs2303)/urdf/robot_model.urdf" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     
     <!-- Start RPLIDAR sensor node which provides LaserScan data  -->
@@ -13,6 +13,9 @@
         <param name="inverted" type="bool" value="false"/>
         <param name="angle_compensate" type="bool" value="true"/>
     </node>
+
+    <!-- arduino serial -->
+    <include file="$(find rosserial_mirs2303)/launch/serial_mirs2303.launch"/>
 
     <!-- outdoor -->
     <!--<node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="

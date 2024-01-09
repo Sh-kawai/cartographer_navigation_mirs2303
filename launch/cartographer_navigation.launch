@@ -13,6 +13,9 @@
         <param name="angle_compensate" type="bool" value="true"/>
     </node>
 
+    <!-- arduino serial -->
+    <include file="$(find rosserial_mirs2303)/launch/serial_mirs2303.launch"/>
+
     <!-- outdoor -->
     <!--<node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
           -configuration_directory
