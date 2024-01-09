@@ -15,6 +15,7 @@ find_package(catkin REQUIRED
   std_srvs
   tf
   nav_msgs # add
+  sensor_msgs
 )
 
 find_package(cartographer REQUIRED)
@@ -23,7 +24,7 @@ include("${CARTOGRAPHER_CMAKE_DIR}/functions.cmake")
 catkin_package(
 #  INCLUDE_DIRS include
   LIBRARIES cartgrapher_navigation
-  CATKIN_DEPENDS actionlib geometry_msgs move_base rospy roscpp tf std_msgs nav_msgs
+  CATKIN_DEPENDS actionlib geometry_msgs move_base rospy roscpp tf std_msgs nav_msgs sensor_msgs
   DEPENDS system_lib
 )
 
@@ -39,7 +40,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 
 # add
 catkin_package(
-  CATKIN_DEPENDS nav_msgs tf
+  CATKIN_DEPENDS nav_msgs tf sensor_msgs
   DEPENDS system_lib
 )
 
@@ -48,7 +49,9 @@ include_directories(
 )
 
 # add_executable(simple_odom_generator_node src/simple_odom_generator.cpp)
+add_executable(scan_repair src/scan_repair.cpp)
 
 # target_link_libraries(sample_odom_generator_node
 #    ${catkin_LIBRARIES}
 # )
+target_link_libraries(scan_repair ${catkin_LIBRARIES})

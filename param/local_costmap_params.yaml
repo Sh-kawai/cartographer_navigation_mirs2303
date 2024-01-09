@@ -14,7 +14,7 @@ local_costmap:
    obstacle_layer:
       observation_sources: laser_scan_sensor # namespace
       laser_scan_sensor:
-         topic: /scan
+         topic: /scan_front
          data_type: LaserScan
          sensor_frame: base_link
          marking: true
