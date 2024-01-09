@@ -9,3 +9,13 @@ local_costmap:
    height: 6.0
    resolution: 0.05
    transform_tolerance: 0.5
+
+   # syougaibutu
+   obstacle_layer:
+      observation_sources: laser_scan_sensor # namespace
+      laser_scan_sensor:
+         topic: /scan
+         data_type: LaserScan
+         sensor_frame: base_link
+         marking: true
+         cleaning: true

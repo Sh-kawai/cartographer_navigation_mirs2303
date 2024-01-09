@@ -1,6 +1,6 @@
 <launch>
     <!-- Arguments -->
-    <arg name="map_file" default="$(find cartographer_navigation_mirs2303)/maps/map.yaml"/>
+    <arg name="map_file" default="$(find cartographer_navigation_mirs2303)/maps/lab_ev.yaml"/>
 
     <!-- Load robot description and start state publisher-->
     <param name="robot_description" textfile="$(find cartographer_navigation_mirs2303)/urdf/robot_model.urdf" />
