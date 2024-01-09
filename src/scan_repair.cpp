@@ -22,14 +22,18 @@ void convertScan(const sensor_msgs::LaserScan::ConstPtr& input_scan){
     // filtere data
     int num_ranges = (input_scan->angle_max - input_scan->angle_min) / input_scan->angle_increment;
     filtered_scan.ranges.resize(num_ranges);
+    filtered_scan.intensities.resize(num_ranges);
 
-    for (int i=0; i > num_ranges; ++i){
+    //printf("increment:%f", input_scan->angle_increment);
+
+    for (int i=0; i < num_ranges; i++){
         float angle = input_scan->angle_min + i * input_scan->angle_increment;
         if(angle > min_angle && angle < max_angle){
-            filtered_scan.ranges[i] = std::numeric_limits<float>::quiet_NaN();
+            filtered_scan.ranges[i] = std::numeric_limits<float>::infinity();
         } else {
             filtered_scan.ranges[i] = input_scan->ranges[i];
         }
+        filtered_scan.intensities[i] = input_scan->intensities[i];
     }
 
     //publish
@@ -40,8 +44,8 @@ int main(int argc, char** argv){
     ros::init(argc, argv, "scan_repair");
     ros::NodeHandle nh;
 
-    ros::Subscriber scan_subscriber = nh.subscribe("/scan", 10, convertScan);
-    scan_publisher = nh.advertise<sensor_msgs::LaserScan>("/scan_front", 10);
+    scan_publisher = nh.advertise<sensor_msgs::LaserScan>("/scan", 10);
+    ros::Subscriber scan_subscriber = nh.subscribe("/scan_raw", 10, convertScan);
 
     ros::spin();
 

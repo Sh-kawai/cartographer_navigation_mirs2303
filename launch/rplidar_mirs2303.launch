@@ -8,5 +8,5 @@
         <param name="angle_compensate" type="bool" value="true"/>
     </node>
 
-    <node name="scan_repair" pkg="cartographer_navigation_mirs2303" type="scan_repair"/>
+    <node name="scan_repair" pkg="cartographer_navigation_mirs2303" type="scan_repair" output="screen"/>
 </launch>
